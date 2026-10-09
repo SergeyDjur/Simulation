@@ -21,9 +21,6 @@ public class EntityRenderer {
             case GRASS -> {
                 return emoji.getGRASS();
             }
-            case CARROT -> {
-                return emoji.getCARROT();
-            }
             case FOX -> {
                 return emoji.getFOX();
             }
