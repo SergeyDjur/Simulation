@@ -26,8 +26,5 @@ public class EntityEmoji {
     public String getSTONE() {
         return STONE;
     }
-
-    public String getCARROT() {
-        return CARROT;
-    }
+    
 }
