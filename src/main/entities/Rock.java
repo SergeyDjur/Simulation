@@ -5,7 +5,7 @@ import main.Coordinates;
 public class Rock extends Entity{
 
 
-    protected Rock(Coordinates coordinates) {
+    public Rock(Coordinates coordinates) {
         super(coordinates);
     }
 }
