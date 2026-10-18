@@ -5,7 +5,7 @@ import main.Coordinates;
 public class Carrot extends Entity{
 
 
-    protected Carrot(Coordinates coordinates) {
+    public Carrot(Coordinates coordinates) {
         super(coordinates);
     }
 }
