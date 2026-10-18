@@ -4,7 +4,7 @@ import main.Coordinates;
 
 public class Grass extends Entity {
 
-    protected Grass(Coordinates coordinates) {
+    public Grass(Coordinates coordinates) {
         super(coordinates);
     }
 }
