@@ -4,7 +4,7 @@ import main.Coordinates;
 
 public class Fox extends Creature {
 
-    protected Fox(Coordinates coordinates) {
+    public Fox(Coordinates coordinates) {
         super(coordinates);
     }
 
