@@ -1,17 +1,12 @@
 package main.entities;
 
 
-import main.Coordinates;
+import main.Move;
 
 public class Rabbit extends Herbivore {
 
-    public Rabbit(Coordinates coordinates) {
-        super(coordinates);
-    }
-
     @Override
-    public void makeMove() {
+    public void makeMove(Move move) {
 
     }
-
 }
