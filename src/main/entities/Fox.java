@@ -1,15 +1,13 @@
 package main.entities;
 
-import main.Coordinates;
+
+import main.Move;
 
 public class Fox extends Creature {
 
-    public Fox(Coordinates coordinates) {
-        super(coordinates);
-    }
 
     @Override
-    public void makeMove() {
+    public void makeMove(Move move) {
 
     }
 }
