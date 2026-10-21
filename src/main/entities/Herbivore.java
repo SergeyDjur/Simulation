@@ -1,11 +1,12 @@
 package main.entities;
 
-import main.Coordinates;
+import main.Move;
 
-public abstract class Herbivore extends Creature{
+public abstract class Herbivore extends Creature {
 
 
-    public Herbivore(Coordinates coordinates) {
-        super(coordinates);
-    }
+
+
+
+
 }
