@@ -1,15 +1,12 @@
 package main.entities;
 
-import main.Coordinates;
+import main.Move;
 
-public class Predator extends Creature{
+public class Predator extends Creature {
 
-    protected Predator(Coordinates coordinates) {
-        super(coordinates);
-    }
 
     @Override
-    public void makeMove() {
+    public void makeMove(Move move) {
 
     }
 }
