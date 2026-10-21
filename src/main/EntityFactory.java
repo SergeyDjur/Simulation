@@ -4,27 +4,27 @@ import main.entities.*;
 
 public class EntityFactory {
 
-    public Entity createEntities(EntityType entityType, Coordinates coordinates) {
+    public Entity createEntities(EntityType entityType) {
 
 
         switch (entityType) {
             case FOX -> {
-                return new Fox(coordinates);
+                return new Fox();
             }
             case RABBIT -> {
-                return new Rabbit(coordinates);
+                return new Rabbit();
             }
             case CARROT -> {
-                return new Carrot(coordinates);
+                return new Carrot();
             }
             case ROCK -> {
-                return new Rock(coordinates);
+                return new Rock();
             }
             case TREE -> {
-                return new Tree(coordinates);
+                return new Tree();
             }
             case GRASS -> {
-                return new Grass(coordinates);
+                return new Grass();
             }
             case null, default -> throw new IllegalArgumentException("entity not found");
         }
