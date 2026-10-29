@@ -10,4 +10,8 @@ public abstract class Entity {
     }
 
     public abstract String getEmoji();
+
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
 }
