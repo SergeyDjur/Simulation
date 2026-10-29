@@ -23,21 +23,21 @@ public class InitActions {
 
             throw new IllegalArgumentException("coordinate" + coordinates + "outside the map");
         }
-            if (!gameMap.isCoordinateEmpty(coordinates)) {
-                throw new IllegalArgumentException("coordinate " + coordinates + "already taken");
-            }
+        if (!gameMap.isCoordinateEmpty(coordinates)) {
+            throw new IllegalArgumentException("coordinate " + coordinates + "already taken");
+        }
 
-            Entity entity = entityFactory.createEntity(entityType, coordinates);
-            gameMap.setUpEntity(coordinates, entity);
+        Entity entity = entityFactory.createEntity(entityType, coordinates);
+        gameMap.setUpEntity(coordinates, entity);
 
     }
 
     public void prepareGame(GameMap gameMap) {
         placeEntityOnMap(gameMap, EntityType.RABBIT, new Coordinates(3, 3));
-        placeEntityOnMap(gameMap, EntityType.FOX, new Coordinates(5, 5));
-        placeEntityOnMap(gameMap, EntityType.GRASS, new Coordinates(2, 7));
-        placeEntityOnMap(gameMap, EntityType.ROCK, new Coordinates(2, 4));
-        placeEntityOnMap(gameMap, EntityType.TREE, new Coordinates(3, 1));
+        //placeEntityOnMap(gameMap, EntityType.FOX, new Coordinates(5, 5));
+        // placeEntityOnMap(gameMap, EntityType.GRASS, new Coordinates(2, 7));
+        // placeEntityOnMap(gameMap, EntityType.ROCK, new Coordinates(2, 4));
+        //placeEntityOnMap(gameMap, EntityType.TREE, new Coordinates(3, 1));
         placeEntityOnMap(gameMap, EntityType.CARROT, new Coordinates(8, 4));
     }
 }
