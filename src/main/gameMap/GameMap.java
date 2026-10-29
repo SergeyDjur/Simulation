@@ -29,6 +29,14 @@ public class GameMap {
         return entityMap.get(coordinates);
     }
 
+
+    public void moveEntity(Coordinates currentPosition, Coordinates targetPosition) {
+        Entity entity = getEntityAtCoordinate(currentPosition);
+        removeEntity(currentPosition);
+        setUpEntity(targetPosition, entity);
+    }
+
+
     public boolean isCoordinateEmpty(Coordinates coordinates) {
         return !entityMap.containsKey(coordinates);
     }
@@ -43,6 +51,10 @@ public class GameMap {
 
     public boolean isCoordinateInsideMap(Coordinates coordinates) {
         return coordinates.row() >= 0 && coordinates.row() <= row - 1 && coordinates.column() >= 0 && coordinates.column() <= column - 1;
+    }
+
+    public Map<Coordinates, Entity> getEntityMap() {
+        return entityMap;
     }
 
 }
