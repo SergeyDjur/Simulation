@@ -23,6 +23,11 @@ public class GameMap {
         entities.put(coordinates, entity);
     }
 
+    public boolean isCoordinateEmpty(Coordinates coordinates) {
+        return !entities.containsKey(coordinates);
+    }
+
+
     public void removeEntity(Coordinates coordinates) {
         entities.remove(coordinates);
     }
