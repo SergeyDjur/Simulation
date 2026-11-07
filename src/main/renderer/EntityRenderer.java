@@ -1,26 +1,26 @@
 package main.renderer;
 
 import main.entity.*;
-import main.entityUtils.EntityEmoji;
+import main.utils.EntityEmoji;
 
 
 public class EntityRenderer {
-    public String render(Entity entity, EntityEmoji entityEmoji) {
+    public String render(Entity entity) {
         if (entity instanceof Rabbit) {
-            return entityEmoji.getRabbitEmoji();
+            return EntityEmoji.rabbitEmoji;
         }
         if (entity instanceof Fox) {
-            return entityEmoji.getFoxEmoji();
+            return EntityEmoji.foxEmoji;
         }
         if (entity instanceof Grass) {
-            return entityEmoji.getGrassEmoji();
+            return EntityEmoji.grassEmoji;
         }
         if (entity instanceof Rock) {
-            return entityEmoji.getRockEmoji();
+            return EntityEmoji.rockEmoji;
         }
         if (entity instanceof Tree) {
-            return entityEmoji.getTreeEmoji();
+            return EntityEmoji.treeEmoji;
         }
-        return entityEmoji.getEmptySpaceEmoji();
+        return EntityEmoji.emptySpaceEmoji;
     }
 }
