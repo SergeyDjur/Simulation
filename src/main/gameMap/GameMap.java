@@ -30,4 +30,12 @@ public class GameMap {
     public Collection<Entity> getEntities() {
         return List.copyOf(entities.values());
     }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
 }
