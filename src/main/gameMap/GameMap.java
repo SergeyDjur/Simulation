@@ -2,6 +2,7 @@ package main.gameMap;
 
 import main.Coordinates;
 import main.entity.Entity;
+import main.utils.GameMapUtils;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -19,8 +20,10 @@ public class GameMap {
 
     private final Map<Coordinates, Entity> entities = new HashMap<>();
 
-    public void setUpEntity(Coordinates coordinates, Entity entity) {
+    public void setUpEntity(GameMap gameMap, Coordinates coordinates, Entity entity) {
+        GameMapUtils.validate(gameMap, coordinates);
         entities.put(coordinates, entity);
+
     }
 
     public boolean isCoordinateEmpty(Coordinates coordinates) {
