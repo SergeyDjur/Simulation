@@ -4,6 +4,7 @@ import main.Coordinates;
 import main.entity.*;
 import main.entityUtils.EntityType;
 
+
 public class EntityFactory {
     public Entity createEntity(EntityType entityType, Coordinates coordinates) {
         switch (entityType) {
@@ -27,9 +28,6 @@ public class EntityFactory {
 
     }
 
-    public static void main(String[] args) {
-        EntityFactory factory = new EntityFactory();
-        Entity entity = factory.createEntity(EntityType.RABBIT, new Coordinates(1, 1));
-
-    }
 }
+
+
