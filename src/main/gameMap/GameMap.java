@@ -27,6 +27,9 @@ public class GameMap {
         return !entities.containsKey(coordinates);
     }
 
+    public Entity getEntityAtCoordinate(Coordinates coordinates) {
+        return entities.get(coordinates);
+    }
 
     public void removeEntity(Coordinates coordinates) {
         entities.remove(coordinates);
