@@ -1,5 +1,6 @@
-package main;
+package main.gameMap;
 
+import main.Coordinates;
 import main.entity.Entity;
 
 import java.util.Collection;
@@ -24,14 +25,6 @@ public class GameMap {
 
     public void removeEntity(Coordinates coordinates) {
         entities.remove(coordinates);
-    }
-
-    public int getRow() {
-        return row;
-    }
-
-    public int getColumn() {
-        return column;
     }
 
     public Collection<Entity> getEntities() {
