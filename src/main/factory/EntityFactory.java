@@ -2,7 +2,7 @@ package main.factory;
 
 import main.Coordinates;
 import main.entity.*;
-import main.entityUtils.EntityType;
+import main.utils.EntityType;
 
 
 public class EntityFactory {
