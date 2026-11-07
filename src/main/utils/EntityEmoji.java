@@ -1,4 +1,4 @@
-package main.entityUtils;
+package main.utils;
 
 public class EntityEmoji {
     private EntityEmoji() {
