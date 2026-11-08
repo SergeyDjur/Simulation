@@ -54,6 +54,16 @@ public class EntityFactory {
         return foxes;
     }
 
+    public List<Entity> createGrass(GameMap gameMap) {
+        List<Entity> grassList = new ArrayList<>();
+        int maxAmountGrass = InitActionsUtils.calculateDefaultPercentGrass(gameMap);
+        for (int i = 0; i < maxAmountGrass; i++) {
+            Entity grass = createEntity(EntityType.GRASS, RandomCoordinatesGenerator.generate(gameMap));
+            grassList.add(grass);
+        }
+        return grassList;
+    }
+
 }
 
 
