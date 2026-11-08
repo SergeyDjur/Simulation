@@ -2,7 +2,7 @@ package main.entity;
 
 import main.Coordinates;
 
-public class Creature extends Entity {
+public abstract class Creature extends Entity {
     private final Coordinates coordinates;
 
     public Creature(Coordinates coordinates) {
@@ -12,4 +12,5 @@ public class Creature extends Entity {
     public Coordinates getCoordinates() {
         return coordinates;
     }
+
 }
