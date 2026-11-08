@@ -64,6 +64,16 @@ public class EntityFactory {
         return grassList;
     }
 
+    public List<Entity> createRocks(GameMap gameMap) {
+        List<Entity> rockList = new ArrayList<>();
+        int maxAmountRocks = InitActionsUtils.calculateDefaultPercentRocks(gameMap);
+        for (int i = 0; i < maxAmountRocks; i++) {
+            Entity rock = createEntity(EntityType.ROCK, RandomCoordinatesGenerator.generate(gameMap));
+            rockList.add(rock);
+        }
+        return rockList;
+    }
+
 }
 
 
