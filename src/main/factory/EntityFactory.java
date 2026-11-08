@@ -74,6 +74,16 @@ public class EntityFactory {
         return rockList;
     }
 
+    public List<Entity> createTrees(GameMap gameMap) {
+        List<Entity> treesList = new ArrayList<>();
+        int maxAmountTrees = InitActionsUtils.calculateDefaultPercentTrees(gameMap);
+        for (int i = 0; i < maxAmountTrees; i++) {
+            Entity tree = createEntity(EntityType.TREE, RandomCoordinatesGenerator.generate(gameMap));
+            treesList.add(tree);
+        }
+        return treesList;
+    }
+
 }
 
 
