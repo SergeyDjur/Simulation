@@ -44,6 +44,16 @@ public class EntityFactory {
         return rabbits;
     }
 
+    public List<Entity> createFoxes(GameMap gameMap) {
+        List<Entity> foxes = new ArrayList<>();
+        int maxAmountFoxes = InitActionsUtils.calculateDefaultPercentFoxes(gameMap);
+        for (int i = 0; i < maxAmountFoxes; i++) {
+            Entity rabbit = createEntity(EntityType.FOX, RandomCoordinatesGenerator.generate(gameMap));
+            foxes.add(rabbit);
+        }
+        return foxes;
+    }
+
 }
 
 
