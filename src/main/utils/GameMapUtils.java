@@ -1,6 +1,8 @@
 package main.utils;
 
 import main.Coordinates;
+import main.entity.Creature;
+import main.entity.Entity;
 import main.gameMap.GameMap;
 
 public class GameMapUtils {
@@ -15,5 +17,21 @@ public class GameMapUtils {
         }
         throw new IllegalArgumentException(coordinates + " is out of bounds");
     }
+
+    public static boolean isInsideMap(GameMap gameMap, Coordinates neighbour) {
+        return neighbour.row() >= 0 && neighbour.row() < gameMap.getRow() && neighbour.column() >= 0 && neighbour.column() < gameMap.getColumn();
+    }
+
+
+    public static void makeMove(GameMap gameMap, Coordinates currentPosition, Coordinates nextPosition, Entity entity) {
+
+        gameMap.removeEntity(currentPosition);
+        gameMap.setUpEntity(gameMap, nextPosition, entity);
+        if (entity instanceof Creature creature) {
+            creature.setCoordinates(nextPosition);
+        }
+
+    }
+
 
 }
