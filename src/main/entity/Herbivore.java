@@ -5,7 +5,8 @@ import main.Coordinates;
 public abstract class Herbivore extends Creature {
     protected static final Class<? extends Entity> FOOD = Grass.class;
 
-    public Herbivore(Coordinates coordinates) {
-        super(coordinates, FOOD);
+    public Herbivore(Coordinates coordinates, int speed) {
+        super(coordinates, FOOD, speed);
     }
+
 }
