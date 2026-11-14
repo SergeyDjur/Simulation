@@ -4,10 +4,7 @@ import main.Coordinates;
 import main.entity.Entity;
 import main.utils.GameMapUtils;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GameMap {
     private int row;
@@ -22,8 +19,10 @@ public class GameMap {
 
     public void setUpEntity(GameMap gameMap, Coordinates coordinates, Entity entity) {
         GameMapUtils.validate(gameMap, coordinates);
-        entities.put(coordinates, entity);
+        if (isCoordinateEmpty(coordinates)) {
+            entities.put(coordinates, entity);
 
+        }
     }
 
     public boolean isCoordinateEmpty(Coordinates coordinates) {
@@ -38,9 +37,10 @@ public class GameMap {
         entities.remove(coordinates);
     }
 
-    public Collection<Entity> getEntities() {
-        return List.copyOf(entities.values());
+    public Map<Coordinates, Entity> getEntities() {
+        return new HashMap<>(entities);
     }
+
 
     public int getRow() {
         return row;
