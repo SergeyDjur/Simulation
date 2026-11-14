@@ -2,12 +2,16 @@ package main.entity;
 
 import main.Coordinates;
 import main.gameMap.GameMap;
+
+import main.utils.EntitySettings;
 import main.utils.GameMapUtils;
 
 
 public class Rabbit extends Herbivore {
+
+
     public Rabbit(Coordinates coordinates) {
-        super(coordinates);
+        super(coordinates, EntitySettings.RABBIT_SPEED);
     }
 
     @Override
@@ -22,5 +26,5 @@ public class Rabbit extends Herbivore {
 
     }
 
-    
+
 }
