@@ -22,8 +22,5 @@ public class Rabbit extends Herbivore {
 
     }
 
-    @Override
-    public void makeMove(GameMap gameMap,Coordinates currentPosition) {
-        super.makeMove(gameMap, currentPosition);
-    }
+    
 }
