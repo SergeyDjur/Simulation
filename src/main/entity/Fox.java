@@ -11,18 +11,14 @@ public class Fox extends Predator {
     }
 
     @Override
-    protected void interact(GameMap gameMap,Coordinates currentPosition ,Coordinates targetPosition) {
+    protected void interact(GameMap gameMap, Coordinates currentPosition, Coordinates targetPosition) {
 
         Entity entityTarget = gameMap.getEntityAtCoordinate(targetPosition);
         if (super.food.isInstance(entityTarget)) {
             gameMap.removeEntity(targetPosition);
-            GameMapUtils.makeMove(gameMap,currentPosition, targetPosition, this);
+            GameMapUtils.makeMove(gameMap, currentPosition, targetPosition, this);
         }
 
     }
 
-    @Override
-    public void makeMove(GameMap gameMap, Coordinates currentPosition) {
-        super.makeMove(gameMap, currentPosition);
-    }
 }
