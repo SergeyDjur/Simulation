@@ -2,12 +2,16 @@ package main.entity;
 
 import main.Coordinates;
 import main.gameMap.GameMap;
+
+import main.utils.EntitySettings;
 import main.utils.GameMapUtils;
 
 
 public class Fox extends Predator {
+
+
     public Fox(Coordinates coordinates) {
-        super(coordinates);
+        super(coordinates, EntitySettings.FOX_SPEED, EntitySettings.FOX_POWER_ATTACK);
     }
 
     @Override
