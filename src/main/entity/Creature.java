@@ -1,6 +1,6 @@
 package main.entity;
 
-import main.BFSPathFinder;
+import main.utils.BFSPathFinder;
 import main.Coordinates;
 import main.gameMap.GameMap;
 import main.utils.GameMapUtils;
