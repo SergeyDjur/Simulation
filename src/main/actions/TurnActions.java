@@ -17,7 +17,7 @@ public class TurnActions {
         for (Map.Entry<Coordinates, Entity> entryMap : entities.entrySet()) {
             Entity movable = entryMap.getValue();
             if (movable instanceof Creature creature) {
-                creature.makeMove(gameMap, entryMap.getKey());
+                creature.makeMove(gameMap);
             }
 
         }
