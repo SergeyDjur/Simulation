@@ -66,13 +66,11 @@ public class BFSPathFinder {
             current = kidParent.get(current);
 
         }
-        path.add(start);
         Collections.reverse(path);
         return new ArrayList<>(path);
 
 
     }
-
 
 
     public static List<Coordinates> findPath(GameMap gameMap, Coordinates currentPosition, Class<? extends Entity> targetEntity) {
