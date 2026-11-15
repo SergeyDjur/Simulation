@@ -33,30 +33,22 @@ public abstract class Creature extends Entity {
 
     protected abstract void interact(GameMap gameMap, Coordinates currentPosition, Coordinates targetPosition);
 
-
-    public void makeMove(GameMap gameMap, Coordinates currentPosition) {
-        if (gameMap.getEntityAtCoordinate(currentPosition) != this) {
-            return;
-        }
-
-        List<Coordinates> path = BFSPathFinder.findPath(gameMap, currentPosition, food);
-
-
-        if (gameMap.getEntityAtCoordinate(currentPosition) != this) {
-            return;
-        }
+    public void makeMove(GameMap gameMap) {
+        List<Coordinates> path = BFSPathFinder.findPath(gameMap, this.coordinates, food);
 
         if (path.isEmpty()) {
             return;
         }
-        Coordinates nextPosition = path.get(1);
-        if (gameMap.isCoordinateEmpty(nextPosition)) {
-            GameMapUtils.makeMove(gameMap, currentPosition, nextPosition, this);
-        } else {
-            interact(gameMap, currentPosition, nextPosition);
+        int amountSteps = Math.min(this.speed, path.size());
+        for (int i = 0; i < amountSteps; i++) {
+            Coordinates nextPosition = path.get(i);
+            if (gameMap.isCoordinateEmpty(nextPosition)) {
+                GameMapUtils.makeMove(gameMap, this.coordinates, nextPosition, this);
+            } else {
+                interact(gameMap, this.coordinates, nextPosition);
+            }
         }
 
     }
-
 
 }
