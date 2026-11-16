@@ -19,8 +19,6 @@ public abstract class Creature extends Entity {
         this.food = food;
         this.speed = speed;
         this.HP = EntitySettings.HEALTH;
-
-
     }
 
     public Coordinates getCoordinates() {
@@ -33,6 +31,7 @@ public abstract class Creature extends Entity {
 
     protected abstract void interact(GameMap gameMap, Coordinates currentPosition, Coordinates targetPosition);
 
+
     public boolean isDead() {
         return this.HP <= 0;
     }
@@ -43,25 +42,26 @@ public abstract class Creature extends Entity {
 
     public void makeMove(GameMap gameMap) {
         List<Coordinates> path = BFSPathFinder.findPath(gameMap, this.coordinates, food);
+        if (isDead() || !isPositionValid(gameMap)) {
+            return;
+        }
 
         if (path.isEmpty()) {
             return;
         }
 
-        if (isDead() || isPositionValid(gameMap)) {
 
-            int amountSteps = Math.min(this.speed, path.size());
-            for (int i = 0; i < amountSteps; i++) {
-                Coordinates nextPosition = path.get(i);
-                if (gameMap.isCoordinateEmpty(nextPosition)) {
-                    GameMapUtils.makeMove(gameMap, this.coordinates, nextPosition, this);
+        int amountSteps = Math.min(this.speed, path.size());
+        for (int i = 0; i < amountSteps; i++) {
+            Coordinates nextPosition = path.get(i);
+            if (gameMap.isCoordinateEmpty(nextPosition)) {
+                GameMapUtils.makeMove(gameMap, this.coordinates, nextPosition, this);
 
-                } else {
-                    interact(gameMap, this.coordinates, nextPosition);
-                }
+            } else {
+                interact(gameMap, this.coordinates, nextPosition);
             }
-
         }
+
 
     }
 
