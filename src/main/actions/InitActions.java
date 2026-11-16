@@ -7,9 +7,10 @@ import main.factory.GameMapFactory;
 import main.gameMap.GameMap;
 import main.renderer.EntityRenderer;
 import main.renderer.GameMapConsoleRenderer;
+import main.utils.EntityType;
+import main.utils.InitActionsUtils;
 import main.utils.RandomCoordinatesGenerator;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class InitActions {
@@ -21,46 +22,65 @@ public class InitActions {
 
     //--------------------------RABBIT------------------------//
 
+
     public void placeRabbits(GameMap gameMap, EntityFactory entityFactory) {
-        List<Entity> rabbits = entityFactory.createRabbits(gameMap);
-        for (Entity rabbit : rabbits) {
-            gameMap.setUpEntity(gameMap, RandomCoordinatesGenerator.generate(gameMap), rabbit);
+        int maxAmount = InitActionsUtils.calculateDefaultPercentRabbits(gameMap);
+
+        for (int placed = 0; placed < maxAmount; placed++) {
+            Coordinates rabbitPosition = RandomCoordinatesGenerator.generate(gameMap);
+            Entity rabbit = entityFactory.createEntity(EntityType.RABBIT, rabbitPosition);
+            gameMap.setUpEntity(gameMap, rabbitPosition, rabbit);
         }
     }
 
     //--------------------------FOX------------------------//
 
-    private void placeFoxes(GameMap gameMap, EntityFactory entityFactory) {
-        List<Entity> foxList = entityFactory.createFoxes(gameMap);
-        for (Entity fox : foxList) {
-            gameMap.setUpEntity(gameMap, RandomCoordinatesGenerator.generate(gameMap), fox);
+
+    public void placeFoxes(GameMap gameMap, EntityFactory entityFactory) {
+        int maxAmount = InitActionsUtils.calculateDefaultPercentFoxes(gameMap);
+
+        for (int placed = 0; placed < maxAmount; placed++) {
+            Coordinates foxPosition = RandomCoordinatesGenerator.generate(gameMap);
+            Entity fox = entityFactory.createEntity(EntityType.FOX, foxPosition);
+            gameMap.setUpEntity(gameMap, foxPosition, fox);
         }
     }
 
     //--------------------------GRASS------------------------//
 
-    private void placeGrass(GameMap gameMap, EntityFactory entityFactory) {
-        List<Entity> grassList = entityFactory.createGrass(gameMap);
-        for (Entity grass : grassList) {
-            gameMap.setUpEntity(gameMap, RandomCoordinatesGenerator.generate(gameMap), grass);
+
+    public void placeGrass(GameMap gameMap, EntityFactory entityFactory) {
+        int maxAmount = InitActionsUtils.calculateDefaultPercentGrass(gameMap);
+
+        for (int placed = 0; placed < maxAmount; placed++) {
+            Coordinates grassPosition = RandomCoordinatesGenerator.generate(gameMap);
+            Entity grass = entityFactory.createEntity(EntityType.GRASS, grassPosition);
+            gameMap.setUpEntity(gameMap, grassPosition, grass);
         }
     }
 
     //--------------------------ROCK------------------------//
 
-    private void placeRocks(GameMap gameMap, EntityFactory entityFactory) {
-        List<Entity> rockList = entityFactory.createRocks(gameMap);
-        for (Entity rock : rockList) {
-            gameMap.setUpEntity(gameMap, RandomCoordinatesGenerator.generate(gameMap), rock);
+    public void placeRocks(GameMap gameMap, EntityFactory entityFactory) {
+        int maxAmount = InitActionsUtils.calculateDefaultPercentRocks(gameMap);
+
+        for (int placed = 0; placed < maxAmount; placed++) {
+            Coordinates rockPosition = RandomCoordinatesGenerator.generate(gameMap);
+            Entity rock = entityFactory.createEntity(EntityType.ROCK, rockPosition);
+            gameMap.setUpEntity(gameMap, rockPosition, rock);
         }
     }
 
+
     //--------------------------TREE------------------------//
 
-    private void placeTrees(GameMap gameMap, EntityFactory entityFactory) {
-        List<Entity> treesList = entityFactory.createTrees(gameMap);
-        for (Entity tree : treesList) {
-            gameMap.setUpEntity(gameMap, RandomCoordinatesGenerator.generate(gameMap), tree);
+    public void placeTrees(GameMap gameMap, EntityFactory entityFactory) {
+        int maxAmount = InitActionsUtils.calculateDefaultPercentTrees(gameMap);
+
+        for (int placed = 0; placed < maxAmount; placed++) {
+            Coordinates treePosition = RandomCoordinatesGenerator.generate(gameMap);
+            Entity tree = entityFactory.createEntity(EntityType.TREE, treePosition);
+            gameMap.setUpEntity(gameMap, treePosition, tree);
         }
     }
 
@@ -84,6 +104,14 @@ public class InitActions {
         EntityRenderer entityRenderer = new EntityRenderer();
         initActions.prepareGame(gameMap, entityFactory);
 
+
+        /*
+        initActions.placeEntity(gameMap, new Coordinates(0, 10), new Grass());
+        initActions.placeEntity(gameMap, new Coordinates(0, 10), new Rabbit(new Coordinates(0, 10)));
+
+         */
+
+
         Scanner scanner = new Scanner(System.in);
 
 
@@ -97,6 +125,7 @@ public class InitActions {
             turnActions.nextTurn(gameMap);
             gameMapConsoleRenderer.render(gameMap, entityRenderer);
             turnsAmount++;
+            System.out.println();
             System.out.println("amount of turns " + " " + turnsAmount);
         }
     }
