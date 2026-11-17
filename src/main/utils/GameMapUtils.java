@@ -37,7 +37,7 @@ public class GameMapUtils {
 
     }
 
-    public static int calculateRestRabbits(Map<Coordinates, Entity> entities) {
+    private static int calculateRestRabbits(Map<Coordinates, Entity> entities) {
         int restRabbits = 0;
 
         for (Map.Entry<Coordinates, Entity> entryGrass : entities.entrySet()) {
@@ -66,6 +66,11 @@ public class GameMapUtils {
     public static boolean isLessMinAmountGrass(GameMap gameMap) {
         int restGrass = calculateRestGrass(gameMap.getEntities());
         return restGrass <= EntitySettings.MIN_AMOUNT_GRASS;
+    }
+
+    public static boolean isLessMinAmountRabbits(GameMap gameMap) {
+        int restRabbits = calculateRestRabbits(gameMap.getEntities());
+        return restRabbits <= EntitySettings.MIN_AMOUNT_RABBITS;
     }
 
 
