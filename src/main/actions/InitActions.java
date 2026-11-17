@@ -3,15 +3,10 @@ package main.actions;
 import main.Coordinates;
 import main.entity.*;
 import main.factory.EntityFactory;
-import main.factory.GameMapFactory;
 import main.gameMap.GameMap;
-import main.renderer.EntityRenderer;
-import main.renderer.GameMapConsoleRenderer;
 import main.utils.EntityType;
 import main.utils.InitActionsUtils;
 import main.utils.RandomCoordinatesGenerator;
-
-import java.util.Scanner;
 
 public class InitActions {
 
@@ -90,44 +85,6 @@ public class InitActions {
         placeGrass(gameMap, entityFactory);
         placeRocks(gameMap, entityFactory);
         placeTrees(gameMap, entityFactory);
-    }
-
-
-    public static void main(String[] args) {
-        TurnActions turnActions = new TurnActions();
-        InitActions initActions = new InitActions();
-        EntityFactory entityFactory = new EntityFactory();
-        GameMapFactory gameMapFactory = new GameMapFactory();
-        GameMap gameMap = gameMapFactory.createGameMap(20, 20);
-        GameMapConsoleRenderer gameMapConsoleRenderer = new GameMapConsoleRenderer();
-
-        EntityRenderer entityRenderer = new EntityRenderer();
-        initActions.prepareGame(gameMap, entityFactory);
-
-
-        /*
-        initActions.placeEntity(gameMap, new Coordinates(0, 10), new Grass());
-        initActions.placeEntity(gameMap, new Coordinates(0, 10), new Rabbit(new Coordinates(0, 10)));
-
-         */
-
-
-        Scanner scanner = new Scanner(System.in);
-
-
-        int turnsAmount = 0;
-        while (true) {
-            System.out.println("press Enter to make next turn or press 'q' to quit :");
-            String line = scanner.nextLine();
-            if (line.equalsIgnoreCase("q")) {
-                break;
-            }
-            turnActions.nextTurn(gameMap);
-            gameMapConsoleRenderer.render(gameMap, entityRenderer);
-            turnsAmount++;
-            System.out.println();
-            System.out.println("amount of turns " + " " + turnsAmount);
-        }
     }
 
 }
