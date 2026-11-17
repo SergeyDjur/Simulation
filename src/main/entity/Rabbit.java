@@ -22,6 +22,7 @@ public class Rabbit extends Herbivore {
         if (super.food.isInstance(entityTarget)) {
             gameMap.removeEntity(targetPosition);
             GameMapUtils.makeMove(gameMap, currentPosition, targetPosition, this);
+            this.HP++;
         }
 
     }
