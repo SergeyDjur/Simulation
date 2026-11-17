@@ -25,6 +25,10 @@ public abstract class Creature extends Entity {
         return coordinates;
     }
 
+    public void setHP(int HP) {
+        this.HP = HP;
+    }
+
     public void setCoordinates(Coordinates coordinates) {
         this.coordinates = coordinates;
     }
@@ -49,13 +53,14 @@ public abstract class Creature extends Entity {
         if (path.isEmpty()) {
             return;
         }
-
-
+        
         int amountSteps = Math.min(this.speed, path.size());
         for (int i = 0; i < amountSteps; i++) {
             Coordinates nextPosition = path.get(i);
             if (gameMap.isCoordinateEmpty(nextPosition)) {
+                System.out.println(this.HP);
                 GameMapUtils.makeMove(gameMap, this.coordinates, nextPosition, this);
+
 
             } else {
                 interact(gameMap, this.coordinates, nextPosition);
