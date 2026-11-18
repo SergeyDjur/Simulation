@@ -11,12 +11,17 @@ import main.utils.RandomCoordinatesGenerator;
 public class PlaceGrassAction implements Action {
     @Override
     public void execute(GameMap gameMap, EntityFactory entityFactory) {
-        int defaultAmountGrass = InitActionsUtils.calculateDefaultPercentGrass(gameMap);
+        int defaultAmountGrass = calculateDefaultPercentGrass(gameMap);
 
         for (int placed = 0; placed < defaultAmountGrass; placed++) {
             Coordinates grassPosition = RandomCoordinatesGenerator.generate(gameMap);
             Entity grass = entityFactory.createEntity(EntityType.GRASS, grassPosition);
             gameMap.setUpEntity(gameMap, grassPosition, grass);
         }
+    }
+
+    private int calculateDefaultPercentGrass(GameMap gameMap) {
+        double grassDefaultPercent = (gameMap.getRow() * gameMap.getColumn()) * 0.08;
+        return (int) grassDefaultPercent;
     }
 }
