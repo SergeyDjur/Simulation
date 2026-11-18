@@ -9,10 +9,7 @@ public class InitActionsUtils {
 
 
 
-    public static int calculateDefaultPercentRocks(GameMap gameMap) {
-        double rocksDefaultPercent = (gameMap.getRow() * gameMap.getColumn()) * 0.01;
-        return (int) rocksDefaultPercent;
-    }
+
 
 
 }
