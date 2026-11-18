@@ -7,10 +7,7 @@ public class InitActionsUtils {
 
     }
 
-    public static int calculateDefaultPercentRabbits(GameMap gameMap) {
-        double rabbitsDefaultPercent = ((gameMap.getRow() * gameMap.getColumn()) * 0.03);
-        return (int) rabbitsDefaultPercent;
-    }
+
 
     public static int calculateDefaultPercentFoxes(GameMap gameMap) {
         double foxesDefaultPercent = (gameMap.getRow() * gameMap.getColumn()) * 0.01;
