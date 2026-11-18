@@ -11,12 +11,17 @@ import main.utils.RandomCoordinatesGenerator;
 public class PlaceTreesAction implements Action {
     @Override
     public void execute(GameMap gameMap, EntityFactory entityFactory) {
-        int defaultAmountTrees = InitActionsUtils.calculateDefaultPercentTrees(gameMap);
+        int defaultAmountTrees = calculateDefaultPercentTrees(gameMap);
 
         for (int placed = 0; placed < defaultAmountTrees; placed++) {
             Coordinates treePosition = RandomCoordinatesGenerator.generate(gameMap);
             Entity tree = entityFactory.createEntity(EntityType.TREE, treePosition);
             gameMap.setUpEntity(gameMap, treePosition, tree);
         }
+    }
+
+    private int calculateDefaultPercentTrees(GameMap gameMap) {
+        double treesDefaultPercent = (gameMap.getRow() * gameMap.getColumn()) * 0.01;
+        return (int) treesDefaultPercent;
     }
 }
