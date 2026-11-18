@@ -14,8 +14,5 @@ public class InitActionsUtils {
         return (int) rocksDefaultPercent;
     }
 
-    public static int calculateDefaultPercentTrees(GameMap gameMap) {
-        double treesDefaultPercent = (gameMap.getRow() * gameMap.getColumn()) * 0.01;
-        return (int) treesDefaultPercent;
-    }
+
 }
