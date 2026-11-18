@@ -6,11 +6,8 @@ public class InitActionsUtils {
     private InitActionsUtils() {
 
     }
-    
-    public static int calculateDefaultPercentGrass(GameMap gameMap) {
-        double grassDefaultPercent = (gameMap.getRow() * gameMap.getColumn()) * 0.08;
-        return (int) grassDefaultPercent;
-    }
+
+
 
     public static int calculateDefaultPercentRocks(GameMap gameMap) {
         double rocksDefaultPercent = (gameMap.getRow() * gameMap.getColumn()) * 0.01;
