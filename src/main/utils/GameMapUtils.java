@@ -37,41 +37,4 @@ public class GameMapUtils {
 
     }
 
-    private static int calculateRestRabbits(Map<Coordinates, Entity> entities) {
-        int restRabbits = 0;
-
-        for (Map.Entry<Coordinates, Entity> entryGrass : entities.entrySet()) {
-            Entity entity = entryGrass.getValue();
-            String name = entity.getClass().getSimpleName();
-            if (name.equals(Rabbit.class.getSimpleName())) {
-                restRabbits++;
-            }
-
-        }
-        return restRabbits;
-    }
-
-    private static int calculateRestGrass(Map<Coordinates, Entity> entities) {
-        int restGrass = 0;
-        for (Map.Entry<Coordinates, Entity> entryGrass : entities.entrySet()) {
-            Entity entity = entryGrass.getValue();
-            String name = entity.getClass().getSimpleName();
-            if (name.equals(Grass.class.getSimpleName())) {
-                restGrass++;
-            }
-        }
-        return restGrass;
-    }
-
-    public static boolean isLessMinAmountGrass(GameMap gameMap) {
-        int restGrass = calculateRestGrass(gameMap.getEntities());
-        return restGrass <= EntitySettings.MIN_AMOUNT_GRASS;
-    }
-
-    public static boolean isLessMinAmountRabbits(GameMap gameMap) {
-        int restRabbits = calculateRestRabbits(gameMap.getEntities());
-        return restRabbits <= EntitySettings.MIN_AMOUNT_RABBITS;
-    }
-
-
 }
