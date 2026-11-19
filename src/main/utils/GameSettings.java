@@ -6,6 +6,8 @@ public class GameSettings {
     private GameSettings() {
 
     }
+    public static final int MIN_AMOUNT_RABBITS = 3;
+    public static final int MIN_AMOUNT_GRASS = 5;
 
     public static int calculateMaxAmountRabbits(GameMap gameMap) {
         double rabbitsDefaultPercent = ((gameMap.getRow() * gameMap.getColumn()) * 0.03);
