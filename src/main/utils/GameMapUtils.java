@@ -14,9 +14,6 @@ public class GameMapUtils {
 
     }
 
-    public static final int MIN_AMOUNT_RABBITS = 3;
-    public static final int MIN_AMOUNT_GRASS = 5;
-
     public static void validate(GameMap gameMap, Coordinates coordinates) {
 
         if (coordinates.row() >= 0 && coordinates.row() < gameMap.getRow() && coordinates.column() >= 0 && coordinates.column() < gameMap.getColumn()) {
@@ -70,12 +67,12 @@ public class GameMapUtils {
 
     public static boolean isLessMinAmountGrass(GameMap gameMap) {
         int restGrass = calculateRestGrass(gameMap);
-        return restGrass <= MIN_AMOUNT_GRASS;
+        return restGrass <= GameSettings.MIN_AMOUNT_GRASS;
     }
 
     private boolean isLessMinAmountRabbits(GameMap gameMap) {
         int restRabbits = calculateRestRabbits(gameMap);
-        return restRabbits <= GameMapUtils.MIN_AMOUNT_RABBITS;
+        return restRabbits <= GameSettings.MIN_AMOUNT_RABBITS;
     }
 
 }
