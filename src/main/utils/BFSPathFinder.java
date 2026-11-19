@@ -35,7 +35,7 @@ public class BFSPathFinder {
         }
 
         Coordinates upLeftNeighbour = new Coordinates(exploringCell.row() + 1, exploringCell.column() - 1);
-        if (GameMapUtils.isInsideMap(gameMap, upNeighbour)) {
+        if (GameMapUtils.isInsideMap(gameMap, upLeftNeighbour)) {
             neighbours.add(upLeftNeighbour);
         }
 
