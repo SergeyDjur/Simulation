@@ -51,5 +51,18 @@ public class GameMapUtils {
         }
         return restGrass;
     }
-    
+    private int calculateRestRabbits(GameMap gameMap) {
+        Map<Coordinates, Entity> entities = gameMap.getEntities();
+        int restRabbits = 0;
+
+        for (Map.Entry<Coordinates, Entity> entryGrass : entities.entrySet()) {
+            Entity entity = entryGrass.getValue();
+            String name = entity.getClass().getSimpleName();
+            if (name.equals(Rabbit.class.getSimpleName())) {
+                restRabbits++;
+            }
+
+        }
+        return restRabbits;
+    }
 }
