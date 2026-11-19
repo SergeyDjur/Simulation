@@ -13,6 +13,8 @@ public class GameMapUtils {
     private GameMapUtils() {
 
     }
+    public static final int MIN_AMOUNT_RABBITS = 3;
+    public static final int MIN_AMOUNT_GRASS = 5;
 
     public static void validate(GameMap gameMap, Coordinates coordinates) {
 
@@ -37,4 +39,17 @@ public class GameMapUtils {
 
     }
 
+    public static int calculateRestGrass(GameMap gameMap) {
+        Map<Coordinates, Entity> entities = gameMap.getEntities();
+        int restGrass = 0;
+        for (Map.Entry<Coordinates, Entity> entryGrass : entities.entrySet()) {
+            Entity entity = entryGrass.getValue();
+            String name = entity.getClass().getSimpleName();
+            if (name.equals(Grass.class.getSimpleName())) {
+                restGrass++;
+            }
+        }
+        return restGrass;
+    }
+    
 }
