@@ -74,6 +74,10 @@ public class Simulation {
                 Action addGrass = new PlaceGrassAction();
                 addGrass.execute(gameMap, entityFactory);
             }
+            if (GameMapUtils.isLessMinAmountRabbits(gameMap)) {
+                Action addRabbits = new PlaceRabbitsAction();
+                addRabbits.execute(gameMap, entityFactory);
+            }
             gameMapConsoleRenderer.render(gameMap, entityRenderer);
             System.out.println();
             System.out.println("amount of turns " + " " + turnsAmount);
