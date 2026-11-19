@@ -21,4 +21,9 @@ public class GameSettings {
         double grassDefaultPercent = (gameMap.getRow() * gameMap.getColumn()) * 0.08;
         return (int) grassDefaultPercent;
     }
+
+    public static int calculateMaxAmountRocks(GameMap gameMap) {
+        double rocksDefaultPercent = (gameMap.getRow() * gameMap.getColumn()) * 0.01;
+        return (int) rocksDefaultPercent;
+    }
 }
