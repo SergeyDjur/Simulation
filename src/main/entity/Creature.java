@@ -53,15 +53,12 @@ public abstract class Creature extends Entity {
         if (path.isEmpty()) {
             return;
         }
-        
+
         int amountSteps = Math.min(this.speed, path.size());
         for (int i = 0; i < amountSteps; i++) {
             Coordinates nextPosition = path.get(i);
             if (gameMap.isCoordinateEmpty(nextPosition)) {
-                System.out.println(this.HP);
                 GameMapUtils.makeMove(gameMap, this.coordinates, nextPosition, this);
-
-
             } else {
                 interact(gameMap, this.coordinates, nextPosition);
             }
