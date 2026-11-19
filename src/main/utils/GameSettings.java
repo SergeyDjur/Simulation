@@ -16,4 +16,9 @@ public class GameSettings {
         double foxesDefaultPercent = (gameMap.getRow() * gameMap.getColumn()) * 0.01;
         return (int) foxesDefaultPercent;
     }
+
+    public static int calculateMaxAmountGrass(GameMap gameMap) {
+        double grassDefaultPercent = (gameMap.getRow() * gameMap.getColumn()) * 0.08;
+        return (int) grassDefaultPercent;
+    }
 }
