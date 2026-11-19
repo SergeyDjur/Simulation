@@ -7,6 +7,7 @@ import main.factory.GameMapFactory;
 import main.gameMap.GameMap;
 import main.renderer.EntityRenderer;
 import main.renderer.GameMapConsoleRenderer;
+import main.utils.GameMapUtils;
 
 import java.util.List;
 import java.util.Scanner;
@@ -54,7 +55,7 @@ public class Simulation {
 
         gameMapConsoleRenderer.render(gameMap, entityRenderer);
 
-        System.out.println(turnsAmount);
+        System.out.println("amount of turns" + " " + turnsAmount);
 
         executeInitActions();
 
@@ -67,9 +68,13 @@ public class Simulation {
                 break;
             }
             executeTurnActions();
-            gameMapConsoleRenderer.render(gameMap, entityRenderer);
-            turnsAmount++;
 
+            turnsAmount++;
+            if (GameMapUtils.isLessMinAmountGrass(gameMap)) {
+                Action addGrass = new PlaceGrassAction();
+                addGrass.execute(gameMap, entityFactory);
+            }
+            gameMapConsoleRenderer.render(gameMap, entityRenderer);
             System.out.println();
             System.out.println("amount of turns " + " " + turnsAmount);
         }
