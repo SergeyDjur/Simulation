@@ -65,4 +65,10 @@ public class GameMapUtils {
         }
         return restRabbits;
     }
+    public static boolean isLessMinAmountGrass(GameMap gameMap) {
+        int restGrass = calculateRestGrass(gameMap);
+        return restGrass <= MIN_AMOUNT_GRASS;
+    }
+
+
 }
