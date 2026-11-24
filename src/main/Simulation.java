@@ -84,10 +84,9 @@ public class Simulation {
                 }
 
 
-
             }
         } catch (InterruptedException e) {
-            gameController.setQuit(true);
+            Thread.currentThread().interrupt();
         }
     }
 
