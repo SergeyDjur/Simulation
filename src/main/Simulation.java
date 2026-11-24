@@ -10,8 +10,6 @@ import main.renderer.GameMapConsoleRenderer;
 import main.utils.GameMapUtils;
 
 import java.util.List;
-import java.util.Scanner;
-
 
 public class Simulation {
     private final GameMapFactory gameMapFactory;
@@ -20,15 +18,17 @@ public class Simulation {
     private final EntityFactory entityFactory;
     private final EntityRenderer entityRenderer;
     private final GameMapConsoleRenderer gameMapConsoleRenderer;
+    private final GameController gameController;
 
 
-    public Simulation(GameMapFactory gameMapFactory, GameMap gameMap, EntityFactory entityFactory, EntityRenderer entityRenderer, GameMapConsoleRenderer gameMapConsoleRenderer) {
+    public Simulation(GameMapFactory gameMapFactory, GameMap gameMap, EntityFactory entityFactory, EntityRenderer entityRenderer, GameMapConsoleRenderer gameMapConsoleRenderer, GameController gameController) {
         this.gameMapFactory = gameMapFactory;
 
         this.gameMap = gameMap;
         this.entityFactory = entityFactory;
         this.entityRenderer = entityRenderer;
         this.gameMapConsoleRenderer = gameMapConsoleRenderer;
+        this.gameController = gameController;
     }
 
     List<Action> initActions = List.of(new PlaceRabbitsAction(), new PlaceGrassAction(), new PlaceFoxesAction(), new PlaceRocksAction(), new PlaceTreesAction());
@@ -50,37 +50,59 @@ public class Simulation {
 
     public void startSimulation() {
 
-        int turnsAmount = 0;
-        Scanner scanner = new Scanner(System.in);
-
-        gameMapConsoleRenderer.render(gameMap, entityRenderer);
-
-        System.out.println("amount of turns" + " " + turnsAmount);
-
         executeInitActions();
+        int turnsAmount = 0;
+
+        try {
+            while (true) {
+                boolean isStopped = gameController.getIsPaused();
+                boolean isEndlessLoop = gameController.getIsStartSimulation();
+                boolean isNextTurn = gameController.getIsNextTurn();
+                boolean isQuit = gameController.getIsQuit();
+                if (isQuit) {
+                    break;
+                }
+                if (isStopped) {
+                    Thread.sleep(1000);
+                }
+                if (isNextTurn || isEndlessLoop) {
+                    if (GameMapUtils.isLessMinAmountGrass(gameMap)) {
+                        Action addGrass = new PlaceGrassAction();
+                        addGrass.execute(gameMap, entityFactory);
+                    }
+                    if (GameMapUtils.isLessMinAmountRabbits(gameMap)) {
+                        Action addRabbits = new PlaceRabbitsAction();
+                        addRabbits.execute(gameMap, entityFactory);
+                    }
+                    executeTurnActions();
+                    gameMapConsoleRenderer.render(gameMap, entityRenderer);
+                    System.out.println();
+                    turnsAmount++;
+                    System.out.println("amount of turns " + " " + turnsAmount);
+                    Thread.sleep(1000);
+                    gameController.setNextTurn(false);
+                }
+                if (isEndlessLoop) {
+                    if (GameMapUtils.isLessMinAmountGrass(gameMap)) {
+                        Action addGrass = new PlaceGrassAction();
+                        addGrass.execute(gameMap, entityFactory);
+                    }
+                    if (GameMapUtils.isLessMinAmountRabbits(gameMap)) {
+                        Action addRabbits = new PlaceRabbitsAction();
+                        addRabbits.execute(gameMap, entityFactory);
+                    }
+                    executeTurnActions();
+                    gameMapConsoleRenderer.render(gameMap, entityRenderer);
+                    System.out.println();
+                    turnsAmount++;
+                    System.out.println("amount of turns " + " " + turnsAmount);
+                    Thread.sleep(1000);
+                }
 
 
-        while (true) {
-            System.out.println("press Enter to make next turn or press 'q' to quit :");
-            String line = scanner.nextLine();
-
-            if (line.equalsIgnoreCase("q")) {
-                break;
             }
-            executeTurnActions();
-
-            turnsAmount++;
-            if (GameMapUtils.isLessMinAmountGrass(gameMap)) {
-                Action addGrass = new PlaceGrassAction();
-                addGrass.execute(gameMap, entityFactory);
-            }
-            if (GameMapUtils.isLessMinAmountRabbits(gameMap)) {
-                Action addRabbits = new PlaceRabbitsAction();
-                addRabbits.execute(gameMap, entityFactory);
-            }
-            gameMapConsoleRenderer.render(gameMap, entityRenderer);
-            System.out.println();
-            System.out.println("amount of turns " + " " + turnsAmount);
+        } catch (InterruptedException e) {
+            gameController.setQuit(true);
         }
     }
 
