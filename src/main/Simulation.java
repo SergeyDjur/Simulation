@@ -82,22 +82,7 @@ public class Simulation {
                     Thread.sleep(1000);
                     gameController.setNextTurn(false);
                 }
-                if (isEndlessLoop) {
-                    if (GameMapUtils.isLessMinAmountGrass(gameMap)) {
-                        Action addGrass = new PlaceGrassAction();
-                        addGrass.execute(gameMap, entityFactory);
-                    }
-                    if (GameMapUtils.isLessMinAmountRabbits(gameMap)) {
-                        Action addRabbits = new PlaceRabbitsAction();
-                        addRabbits.execute(gameMap, entityFactory);
-                    }
-                    executeTurnActions();
-                    gameMapConsoleRenderer.render(gameMap, entityRenderer);
-                    System.out.println();
-                    turnsAmount++;
-                    System.out.println("amount of turns " + " " + turnsAmount);
-                    Thread.sleep(1000);
-                }
+
 
 
             }
