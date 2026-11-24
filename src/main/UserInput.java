@@ -36,18 +36,18 @@ public class UserInput {
             }
             if (command.equalsIgnoreCase("P")) {
                 gameController.setPaused(true);
-                return;
+
             }
 
             if (command.equalsIgnoreCase("N")) {
 
                 gameController.setNextTurn(true);
-                return;
+
             }
             if (command.equalsIgnoreCase("S")) {
 
                 gameController.setStartSimulation(true);
-                return;
+
 
             }
             if (command.equalsIgnoreCase("Q")) {
